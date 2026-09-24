@@ -2,6 +2,18 @@
 
 All notable changes to `komma-softhouse/filament-btcpay` are documented here. The format follows Keep a Changelog and the project follows SemVer.
 
+## [1.1.0] - 2026-09-24
+
+### Removed
+
+- The runtime licence check: the daily call to the licence server and the pause in creating invoices. The licence is enforced where it is sold — access to the private Composer repository, which gates every install and update.
+- The `btcpay_license_state` table, dropped by a new migration; the `license.connection` config key; `Btcpay::license()`.
+- The licence line in `btcpay:selftest`.
+
+### Deprecated
+
+- `btcpay:license` does nothing and exits successfully, so schedules that call it keep running. `LicenseExpiredException` is no longer thrown. Both are removed in 2.0.
+
 ## [1.0.1] - 2026-09-20
 
 ### Changed
